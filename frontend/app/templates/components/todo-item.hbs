@@ -1,0 +1,7 @@
+{{#if editing}}
+  {{input class="edit" value=todo.title action="submitTodo"}}
+{{else}}
+  {{input type="checkbox" checked=todo.done class="toggle"}}
+  <label class="{{if todo.done 'completed'}}" {{action "editTodo" on="doubleClick"}}>{{todo.title}}</label>
+  <button class="destroy" {{action "deleteTodo"}}></button>
+{{/if}}

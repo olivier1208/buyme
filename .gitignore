@@ -1,5 +1,3 @@
-
-
 # compiled output
 frontend/dist
 frontend/tmp
@@ -15,7 +13,7 @@ frontend/coverage/*
 frontend/libpeerconnection.log
 frontend/npm-debug.log*
 frontend/yarn-error.log
-vtestem.log
+frontend/testem.log
 
 # ember-try
 frontend/.node_modules.ember-try/
