@@ -21,8 +21,10 @@ vtestem.log
 frontend/.node_modules.ember-try/
 frontend/bower.json.ember-try
 frontend/package.json.ember-try
+frontend/.idea
+frontend/.git
 
-backend/.idea
+backend/.idea	
 backend/node_modules
 backend/public/hot
 backend/public/storage
@@ -35,3 +37,5 @@ backend/Homestead.json
 backend/Homestead.yaml
 backend/npm-debug.log
 backend/yarn-error.log
+
+.idea
