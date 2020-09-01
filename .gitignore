@@ -36,4 +36,4 @@ backend/Homestead.yaml
 backend/npm-debug.log
 backend/yarn-error.log
 
-.idea
+.idea/*

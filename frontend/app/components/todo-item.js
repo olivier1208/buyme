@@ -17,7 +17,12 @@ export default Component.extend({
         });
       } else {
         this.toggleProperty("editing");
+        todo.save();
       }
+    },
+    toggleDone(e) {
+      this.get('todo').set("done", e.target.checked)
+      this.get('todo').save()
     },
     deleteTodo() {
       this.get("todo").destroyRecord();

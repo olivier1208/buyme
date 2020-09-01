@@ -14,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('todos', 'TaskController', []);
+Route::apiResource('todos', 'TaskController')->parameters([
+    'todos' => 'task'
+]);

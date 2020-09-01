@@ -26,8 +26,9 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate(['title' => ['required']]);
-        return new \App\Http\Resources\Task(Task::create($data));
+        $data = $request->validate(['todo.title' => ['required']]);
+
+        return new \App\Http\Resources\Task(Task::create($data['todo']));
     }
 
     /**
@@ -50,8 +51,10 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        $request->validate(['title' => ['nullable'], 'done' => ['nullable', 'boolean']]);
-        $task->update($request->only(['title', 'done']));
+        $data = $request->validate(['todo.title' => ['nullable'], 'todo.done' => ['nullable', 'boolean']]);
+
+        $task->update($data['todo']);
+
         return new \App\Http\Resources\Task($task);
     }
 
