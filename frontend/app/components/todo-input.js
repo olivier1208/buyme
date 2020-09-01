@@ -1,7 +1,8 @@
 import Component from '@ember/component';
+import { inject } from '@ember/service';
 
 export default Component.extend({
-  store: Ember.inject.service(),
+  store: inject(),
   actions: {
     submitTodo() {
       if (this.get('title')) {
@@ -9,7 +10,7 @@ export default Component.extend({
           title: this.get('title'),
           done: false
         });
-        record.save( )
+        record.save()
       }
       this.set('title', "");
     }
