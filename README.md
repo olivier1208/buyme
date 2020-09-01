@@ -1,6 +1,6 @@
 # Laravel and EmberJs (2.18) Todo list For BuyMe - Technical Exercise
 
-####Prerequesites
+#### Prerequesites
 
  - EmberJs with 2.18 version (Installation with  : `npm install -g ember-cli@2.11`)
  - PHP >= 7.3
