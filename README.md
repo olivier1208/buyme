@@ -11,6 +11,8 @@ In order to run the project just.... `run.sh`
 
 ##### Running the projects separately
 
-1. For Backend (Laravel) : `php artisan server`
+1. For Backend (Laravel) : `php artisan serve`
 2. For FrontEnd (EmberJs 2.18) : `ember serve`
+
+
 Enjoy ... :)
