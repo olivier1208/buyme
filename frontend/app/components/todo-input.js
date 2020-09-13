@@ -1,8 +1,8 @@
 import Component from '@ember/component';
-import { inject } from '@ember/service';
+import { inject as service} from '@ember/service';
 
 export default Component.extend({
-  store: inject(),
+  store: service(),
   actions: {
     submitTodo() {
       if (this.get('title')) {

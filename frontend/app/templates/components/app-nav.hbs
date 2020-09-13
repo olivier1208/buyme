@@ -1,0 +1,21 @@
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+      {{#link-to 'index' class="navbar-brand"}} BuyMe Todo List {{/link-to}}
+    </div>
+    <ul class="nav navbar-nav">
+        <li>
+          {{#if session.isAuthenticated }}
+            {{#link-to 'todo' class="navbar-brand"}} ToDos {{/link-to}}
+          {{/if}}
+        </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+          {{#if session.isAuthenticated }}
+              <button {{ action "logout" }} class="btn btn-danger log">Log out</button>
+          {{else}}
+              <button {{ action "login" }} class="btn btn-info log">Log In</button>
+          {{/if}}
+        </li>
+    </ul>
+</nav>
