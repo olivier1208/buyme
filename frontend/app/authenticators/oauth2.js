@@ -4,5 +4,5 @@ export default OAuth2PasswordGrant.extend({
   headers: {
     "Accept" : "application/json"
   },
-  serverTokenEndpoint: 'http://127.0.0.1:8000/api/login'
+  serverTokenEndpoint: 'http://127.0.0.1:8000/api/login',
 });

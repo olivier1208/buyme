@@ -35,4 +35,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The tasks that belong to the user.
+     */
+    public function tasks()
+    {
+        return $this->belongsToMany('App\Task', 'user_task');
+    }
+
 }

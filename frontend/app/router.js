@@ -12,6 +12,7 @@ Router.map(function () {
     this.route('complete');
     this.route('incomplete');
   });
+  this.route('users', {path: 'users'});
 });
 
 export default Router;

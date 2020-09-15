@@ -35,6 +35,7 @@
     "ember-export-application-global": "^2.0.0",
     "ember-fetch": "^8.0.2",
     "ember-load-initializers": "^1.0.0",
+    "ember-modal-dialog": "^3.0.1",
     "ember-resolver": "^4.0.0",
     "ember-simple-auth": "^3.0.0",
     "ember-simple-auth-token": "^5.2.0",

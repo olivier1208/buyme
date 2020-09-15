@@ -3,19 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \App\Http\Resources\Task
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new \App\Http\Resources\Task(Task::all());
+        $tasks = $request->user()->tasks;
+        return new \App\Http\Resources\Task($tasks);
     }
 
     /**

@@ -5,7 +5,12 @@ export default Component.extend({
   tagName: "li",
   classNameBindings: ["editing"],
   editing: false,
+  isShowingModal: false,
   actions: {
+    toggleModal() {
+      this.get('users');
+      this.toggleProperty('isShowingModal');
+    },
     editTodo() {
       this.toggleProperty("editing");
     },

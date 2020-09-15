@@ -20,5 +20,5 @@ Route::apiResource('todos', 'TaskController')
     'todos' => 'task'
 ])
     ->middleware('auth:sanctum')
-
 ;
+Route::apiResource('users', 'UserController');

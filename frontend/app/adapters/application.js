@@ -7,11 +7,11 @@ export default DS.RESTAdapter.extend(DataAdapterMixin, {
   namespace: 'api',
   host: 'http://127.0.0.1:8000',
   session: service(),
-  authorizer: 'authorizer:oauth2',
+  authorizer: 'authorizer:application',
   headers: computed('session.data.authenticated.token', function() {
     const headers = {};
-    if (this.session.isAuthenticated) {
-      headers['Authorization'] = `Bearer ${this.session.data.authenticated.token}`;
+    if (this.get('session.data.authenticated').access_token) {
+      headers['Authorization'] = `Bearer ${this.get('session.data.authenticated').access_token}`;
     }
 
     return headers;

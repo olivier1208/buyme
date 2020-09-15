@@ -48,7 +48,7 @@ module.exports = function(environment) {
   }
 
   ENV['ember-simple-auth'] = {
-    routeAfterAuthentication: 'todos'
+    identificationAttributeName: 'email',
   };
 
   return ENV;

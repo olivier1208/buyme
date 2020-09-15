@@ -4,13 +4,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Route.extend(AuthenticatedRouteMixin, {
   authenticationRoute: "login",
-  // actions: {
-  //   error: function() {
-  //     this.transitionTo('/login');
-  //     return false;
-  //   }
-  // },
   model() {
-    return this.store.query('todo', { reload: true });
+    return this.store.findAll('user', { reload: true });
   }
 });
