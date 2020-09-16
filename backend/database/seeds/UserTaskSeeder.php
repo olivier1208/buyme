@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 
 class UserTaskSeeder extends Seeder
@@ -11,18 +12,12 @@ class UserTaskSeeder extends Seeder
      */
     public function run()
     {
-        // Populate roles
-        factory(App\Task::class, 20)->create();
+        factory(App\User::class, 10)->create();
 
-        // Populate users
-        factory(App\User::class, 50)->create();
+        $tasks = factory(App\Task::class, 50)->create();
 
-        // Get all the roles attaching up to 3 random roles to each user
-        $tasks = App\Task::all();
-
-        // Populate the pivot table
         App\User::all()->each(function ($user) use ($tasks) {
-            $user->tasks()->attach($tasks->random(rand(1, 10))->pluck('id')->toArray());
+            $user->sharedTasks()->sync($tasks->random(rand(1, 10))->pluck('id')->toArray());
         });
     }
 }

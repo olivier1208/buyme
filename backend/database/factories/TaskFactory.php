@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Task;
+use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -19,7 +20,8 @@ use Illuminate\Support\Str;
 
 $factory->define(Task::class, function (Faker $faker) {
     return [
-        'title' => $faker->colorName,
-        'done' => $faker->boolean(),
+        'title'    => $faker->colorName,
+        'done'     => $faker->boolean(),
+        'owner_id' => User::all()->random(rand(1,10))->pluck('id')->first()
     ];
 });

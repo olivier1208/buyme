@@ -41,7 +41,14 @@ class User extends Authenticatable
      */
     public function tasks()
     {
-        return $this->belongsToMany('App\Task', 'user_task');
+        return $this->hasMany('App\Task', 'owner_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function sharedTasks()
+    {
+        return $this->belongsToMany('App\Task', 'user_task');
+    }
 }

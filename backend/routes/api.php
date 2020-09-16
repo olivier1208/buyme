@@ -1,4 +1,7 @@
 <?php
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserTaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
-Route::post('register', [\App\Http\Controllers\AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
 
 Route::apiResource('todos', 'TaskController')
     ->parameters([
@@ -22,3 +25,6 @@ Route::apiResource('todos', 'TaskController')
     ->middleware('auth:sanctum')
 ;
 Route::apiResource('users', 'UserController');
+
+Route::post('todos/{task}/users', [UserTaskController::class, 'store']);
+Route::delete('todos/{task}/users', [UserTaskController::class, 'destroy']);

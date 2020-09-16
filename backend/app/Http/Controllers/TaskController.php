@@ -18,8 +18,10 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        $tasks = $request->user()->tasks;
-        return new \App\Http\Resources\Task($tasks);
+        $ownerTasks = $request->user()->tasks;
+        $sharedTasks = $request->user()->sharedTasks;
+
+        return new \App\Http\Resources\Task($ownerTasks->merge($sharedTasks));
     }
 
     /**
@@ -73,5 +75,25 @@ class TaskController extends Controller
     {
         $task->delete();
         return new JsonResponse(['message' => 'Task #' . $task->id . ' has been deleted successfully']);
+    }
+
+    /**
+     * @param Request $request
+     * @param Task $task
+     * @return mixed
+     */
+    public function attach(Request $request, Task $task)
+    {
+        return $request->user()->tasks()->attach($task);
+    }
+
+    /**
+     * @param Request $request
+     * @param Task $task
+     * @return mixed
+     */
+    public function detach(Request $request, Task $task)
+    {
+        return $request->user()->tasks()->detach($task);
     }
 }

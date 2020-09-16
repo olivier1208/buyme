@@ -1,0 +1,11 @@
+{{#modal-dialog onClose=(action send "goBackToList") hasOverlay=true}}
+    <ul id="todo-list">
+        <h3 style="text-align: center ">Share with users</h3>
+        <hr>
+        {{#each model as |user|}}
+            {{user-item user=user}}
+        {{/each}}
+    </ul>
+{{/modal-dialog}}
+
+{{outlet}}

@@ -1,14 +1,16 @@
 {{#if editing}}
-  {{input class="edit" value=todo.title action="submitTodo"}}
+    {{input class="edit" value=todo.title action="submitTodo"}}
 {{else}}
-  {{input type="checkbox" checked=todo.done class="toggle" change=(action "toggleDone")}}
-  <label class="{{if todo.done 'completed'}}" {{action "editTodo" on="doubleClick"}}>{{todo.title}}
-      <a style="" href {{action (action "toggleModal")}}>
-          <img src="img/user.png" class="user_share">
-      </a>
-  </label>
-  <button class="destroy" {{action "deleteTodo"}}></button>
-  {{users}}
-  {{outlet}}
+    {{input type="checkbox" checked=todo.done class="toggle" change=(action "toggleDone")}}
+    <label class="{{if todo.done 'completed'}}" {{action "editTodo" on="doubleClick"}}>{{todo.title}}
+        {{#if isTaskOwner }}
+            {{#link-to 'todos_users' todo.id}}
+                <img src="{{if todo.is_shared "img/user.png" "img/share.png"}}" class="user_share" alt="user_share">
+            {{/link-to}}
+        {{/if}}
+    </label>
+    <button class="destroy" {{action "deleteTodo"}}></button>
+
+    {{outlet}}
 
 {{/if}}
