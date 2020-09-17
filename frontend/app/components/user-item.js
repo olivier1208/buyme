@@ -8,11 +8,13 @@ export default Component.extend({
     session: service(),
     currentUser: service(),
     attachUser(user) {
-        console.log("attaching user " + user.id + " with task ")
+        console.log("attaching user " + user.id + " with task HOW TO GET THE TASK ?? (Logged in todos_users.js line11)")
+        alert('You need to attach user#' + user.id + " ")
     },
 
     detachUser(user) {
-        console.log("dedtaching user " + user.id)
+        alert('You need to detach user#' + user.id + " with task HOW TO GET THE TASK ?? (Logged in todos_users.js line11)")
+        console.log("detaching user " + user.id)
     },
     actions: {
         toggleDone(e) {

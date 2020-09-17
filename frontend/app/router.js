@@ -17,6 +17,7 @@ Router.map(function () {
         this.route('attach');
         this.route('detach');
     });
+    this.route("fourOhFour", { path: "*path"});
 });
 
 export default Router;

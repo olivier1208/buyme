@@ -7,17 +7,18 @@ export default Route.extend(AuthenticatedRouteMixin, {
         const params = this.paramsFor('todos_users')
         const todoId = params.todo_id
         let todo = this.store.findRecord('todo', todoId)
-      todo.then((todo)=> {
-          this.store.query('user', {todo: todoId}).then(function(users) {
-            console.log(users.get('firstObject'))
-          })
-      })
+        todo.then((todo) => {
+            console.log(todo.id + " is the id i need to pass to user-item to send it to the API and attach/detach userTask")
+            this.store.query('user', {todo: todoId}).then(function (users) {
+                // console.log(users.get('firstObject'))
+            })
+        })
         return this.store.findAll('user', {reload: true}).then(function (users) {
             return users.map(function (user) {
-              if (user.get('todos').includes(todo)) {
-                  user.set('done', true)
-              }
-              return user
+                if (user.get('todos').includes(todo)) {
+                    user.set('done', true)
+                }
+                return user
             })
 
         });
