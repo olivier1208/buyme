@@ -1,11 +1,14 @@
-<h2>Login page</h2>
+<h2 class="text-center">Login page</h2>
 
-<form {{action 'authenticate' on='submit'}}>
-    <label for="username">Email</label>
-  {{input id='username' placeholder='Enter Email' value=username}}
-    <label for="password">Password</label>
-  {{input id='password' placeholder='Enter Password' type='password' value=password}}
-    <button type="submit">Login</button>
+<form {{action 'authenticate' on='submit'}} class="form-group">
+    <label for="username" style="font-weight: bold; margin: 20px">Email</label>
+  {{input id='username' placeholder='Enter Email' value=username class="form-control"}}
+    <label for="password" style="font-weight: bold; padding: 20px">Password</label>
+  {{input id='password' placeholder='Enter Password' type='password' value=password class="form-control"}}
+    <br>
+    <div class="text-center" style="padding-bottom: 10px">
+        <button type="submit" class="btn btn-success">Login</button>
+    </div>
   {{#if errorMessage}}
       <p>{{errorMessage}}</p>
   {{/if}}
