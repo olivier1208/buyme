@@ -1,29 +1,44 @@
 import Component from '@ember/component';
 import {inject as service} from '@ember/service';
-import {computed} from '@ember/object';
+import axios from 'npm:axios';
 
 export default Component.extend({
     tagName: "li",
     isShowingModal: false,
     session: service(),
     currentUser: service(),
-    attachUser(user) {
-        console.log("attaching user " + user.id + " with task HOW TO GET THE TASK ?? (Logged in todos_users.js line11)")
-        alert('You need to attach user#' + user.id + " ")
-    },
-
-    detachUser(user) {
-        alert('You need to detach user#' + user.id + " with task HOW TO GET THE TASK ?? (Logged in todos_users.js line11)")
-        console.log("detaching user " + user.id)
-    },
     actions: {
         toggleDone(e) {
+            const instance = axios.create({
+                baseURL: 'http://127.0.0.1:8000/api/',
+                timeout: 1000,
+                headers: {'Authorization': `Bearer ${this.get('session.data.authenticated').access_token}`},
+                data: {}
+            });
             const user = this.get('user')
-            const todo = this.get('todo')
+            const todoId = this.get('todoId')
+
             if (e.target.checked) {
-                this.attachUser(user)
+                instance.post('todos/' + todoId + '/users/' + user.get('id'))
+                    .then(function (response) {
+                        // handle success
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        // handle error
+                        console.log(error);
+                    })
+
             } else {
-                this.detachUser(user)
+                instance.delete('todos/' + todoId + '/users/' + user.get('id'),)
+                    .then(function (response) {
+                        // handle success
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        // handle error
+                        console.log(error);
+                    })
             }
         },
     }

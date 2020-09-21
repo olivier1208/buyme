@@ -10,13 +10,12 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
+     * @param Request $request
      * @return \App\Http\Resources\User
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new \App\Http\Resources\User(User::all());
+        return new \App\Http\Resources\User(User::where('id', '!=', $request->user()->id)->get());
     }
 
     public function usersTask(Request $request)

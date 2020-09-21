@@ -3,27 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class UserTaskController extends Controller
 {
     /**
-     * @param Request $request
      * @param Task $task
-     * @return mixed
+     * @param User $user
+     * @return JsonResponse
      */
-    public function store(Request $request, Task $task)
+    public function store(Task $task, User $user)
     {
-        return $request->user()->tasks()->attach($task);
+        $user->sharedTasks()->attach($task);
+        return new JsonResponse("Success");
     }
 
     /**
-     * @param Request $request
      * @param Task $task
-     * @return mixed
+     * @param User $user
+     * @return JsonResponse
      */
-    public function destroy(Request $request, Task $task)
+    public function destroy(Task $task, User $user)
     {
-        return $request->user()->tasks()->detach($task);
+        $user->sharedTasks()->detach($task);
+        return new JsonResponse("Success");
+
     }
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Task extends Model
 {
@@ -25,10 +25,7 @@ class Task extends Model
      */
     public function getIsSharedAttribute()
     {
-        $tasksCount = Task::whereHas('users', function (Builder $query) {
-            $query->where('owner_id', 'like', $this->owner_id);
-        })->count();
-        return (bool)$tasksCount;
+        return (bool)$this->users()->count();
     }
 
     /**
@@ -36,16 +33,14 @@ class Task extends Model
      */
     public function getUsersAttribute()
     {
-        return User::whereHas('tasks', function (Builder $query) {
-            $query->where('id', 'like', $this->id);
-        })->get();
+        return $this->users()->get();
     }
 
     /**
-     * @return HasMany
+     * @return BelongsToMany
      */
     public function users()
     {
-        return $this->hasMany('App\User', 'id');
+        return $this->belongsToMany(User::class, 'user_task');
     }
 }

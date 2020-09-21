@@ -11,8 +11,5 @@ export default Component.extend({
             this.get('router').transitionTo('todos');
             return true;
         },
-        toggleDone(){
-            console.log(this.store.get('user', 1))
-        },
     }
 });

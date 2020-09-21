@@ -17,7 +17,12 @@ class CreateTasksTable extends Migration
             $table->id();
             $table->string('title');
             $table->boolean('done')->default(false);
-            $table->bigInteger('owner_id');
+            $table->bigInteger('owner_id')->unsigned();
+            $table
+                ->foreign('owner_id')
+                ->references('id')
+                ->on('users')
+                ;
             $table->timestamps();
         });
     }

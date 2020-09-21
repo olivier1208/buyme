@@ -3,7 +3,7 @@
         <h3 style="text-align: center ">Share with users</h3>
         <hr>
         {{#each model as |user|}}
-            {{user-item user=user}}
+            {{user-item user=user.user todoId=user.todoId}}
         {{/each}}
     </ul>
 {{/modal-dialog}}

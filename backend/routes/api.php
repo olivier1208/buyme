@@ -24,7 +24,13 @@ Route::apiResource('todos', 'TaskController')
 ])
     ->middleware('auth:sanctum')
 ;
-Route::apiResource('users', 'UserController');
+Route::apiResource('users', 'UserController')
+    ->middleware('auth:sanctum')
+;
 
-Route::post('todos/{task}/users', [UserTaskController::class, 'store']);
-Route::delete('todos/{task}/users', [UserTaskController::class, 'destroy']);
+Route::post('todos/{task}/users/{user}', [UserTaskController::class, 'store'])
+    ->middleware('auth:sanctum')
+;
+Route::delete('todos/{task}/users/{user}', [UserTaskController::class, 'destroy'])
+    ->middleware('auth:sanctum')
+;
