@@ -32,7 +32,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate(['todo.title' => ['required']]);
+        $data = $request->validate(['todo.title' => ['required'], 'todo.owner_id' => ['required']]);
 
         return new \App\Http\Resources\Task(Task::create($data['todo']));
     }

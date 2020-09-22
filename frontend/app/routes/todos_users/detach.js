@@ -6,7 +6,6 @@ export default Route.extend({
 
     model(params) {
         const todo = this.get('store').peekRecord('todo', params.todo_id);
-        console.log(this.get('currentUser'))
         todo.users = [this.get('currentUser')]
 
     },

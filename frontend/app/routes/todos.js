@@ -7,12 +7,13 @@ export default Route.extend(AuthenticatedRouteMixin, {
   currentUser: service(),
 
   beforeModel() {
+    // this.store.unloadAll('todo')
     return this._loadCurrentUser();
   },
   _loadCurrentUser() {
     return this.get('currentUser').load().catch(() => this.get('session').invalidate());
   },
   model() {
-    return this.store.query('todo', {reload: true});
+    return this.store.findAll('todo', {reload: true});
   }
 });
